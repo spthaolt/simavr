@@ -1,0 +1,27 @@
+make obj config
+make[1]: Entering directory '/mnt/e/Workspaces/RESEARCH/AVR/simavr/simavr'
+make[1]: Nothing to be done for 'obj'.
+make[1]: Nothing to be done for 'config'.
+make[1]: Leaving directory '/mnt/e/Workspaces/RESEARCH/AVR/simavr/simavr'
+make libsimavr run_avr
+make[1]: Entering directory '/mnt/e/Workspaces/RESEARCH/AVR/simavr/simavr'
+make[1]: Nothing to be done for 'libsimavr'.
+LD obj-x86_64-linux-gnu/run_avr.elf
+ln -sf obj-x86_64-linux-gnu/run_avr.elf run_avr
+make[1]: Leaving directory '/mnt/e/Workspaces/RESEARCH/AVR/simavr/simavr'
+mkdir -p /include/simavr/avr
+install -m644 sim/*.h /include/simavr/
+install -m644 sim_core_*.h /include/simavr/
+install -m644 sim/avr/*.h /include/simavr/avr/
+mkdir -p /lib
+install obj-x86_64-linux-gnu/libsimavr.a /lib/
+mkdir -p /lib/pkgconfig/
+sed -e "s|PREFIX||g" -e "s|VERSION|v1.6|g" \
+        simavr-avr.pc >/lib/pkgconfig/simavr-avr.pc
+sed -e "s|PREFIX||g" -e "s|VERSION|v1.6|g" \
+        simavr.pc >/lib/pkgconfig/simavr.pc
+install obj-x86_64-linux-gnu/libsimavr.so.1 /lib/
+ln -sf libsimavr.so.1 /lib/libsimavr.so
+mkdir -p /bin
+install obj-x86_64-linux-gnu/run_avr.elf /bin/simavr
+
