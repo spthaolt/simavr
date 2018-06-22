@@ -1,3 +1,7 @@
+## DEBIAN 9 (stretch) 
+
+sudo apt install avr-libc
+sudo apt install libelf-dev
 sudo apt install pkg-config
 sudo apt install libglu1-mesa-dev
 sudo apt install freeglut3-dev
